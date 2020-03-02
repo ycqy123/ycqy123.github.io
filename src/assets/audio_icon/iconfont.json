@@ -1,0 +1,51 @@
+{
+  "id": "1625021",
+  "name": "t",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12036005",
+      "name": "快进",
+      "font_class": "kuaijin",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "12036006",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "12036008",
+      "name": "快退",
+      "font_class": "kuaitui",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "12036012",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "12036020",
+      "name": "停止",
+      "font_class": "tingzhi",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "12036024",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    }
+  ]
+}
