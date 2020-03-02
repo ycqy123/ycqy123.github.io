@@ -1,0 +1,26 @@
+name: Deploy static source to my server
+
+on: 
+  push:
+    branches:
+      -master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+    - name: lint
+      run: npm run lint && npm run lint -- --fix 
+    - name: build
+      run: npm install && npm run build:prod
+
+    - name: deploy
+      uses: easingthemes/ssh-deploy@v2.0.7
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.access_token }}
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.host_name }}
+          TARGET: ${{ secrets.remote_target }}
