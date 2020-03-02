@@ -1,0 +1,45 @@
+import Mock from 'mockjs'
+
+const List = []
+const count = 5
+
+for (let i = 0; i < count; i++) {
+  List.push(Mock.mock({
+    id: '@increment',
+    'merchant_name|1': ['销售部', '市场部', '产品研发部', '培训部', '售后部'],
+    'permission|1': ['管理员', '销售员'],
+    name: Mock.Random.cname(),
+    mobile_number: /^1[0-9]{10}$/,
+    created_at: Mock.Random.datetime()
+  }))
+}
+
+export default [
+  {
+    url: '/kede_fe/member/list',
+    type: 'get',
+    response: config => {
+      const { importance, type, title, page = 1, limit = 20, sort } = config.query
+
+      let mockList = List.filter(item => {
+        if (importance && item.importance !== +importance) return false
+        if (type && item.type !== type) return false
+        if (title && item.title.indexOf(title) < 0) return false
+        return true
+      })
+
+      if (sort === '-id') {
+        mockList = mockList.reverse()
+      }
+
+      const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
+
+      return {
+        code: 20000,
+        data: {
+          total: mockList.length,
+          items: pageList
+        }
+      }
+    }
+  }]
